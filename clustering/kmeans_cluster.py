@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Jan  7 13:32:51 2019
-
 @author: aiktc
 """
 
@@ -28,9 +27,6 @@ plt.title('The Elbow Method')
 plt.xlabel('Number of clusters')
 plt.ylabel('WCSS')
 plt.show()
-
-
-
 #applying kmeans to mall dataset
 kmeans = KMeans(n_clusters = 5, init = 'k-means++', max_iter = 300, n_init = 10, random_state = 0)
 y_kmeans = kmeans.fit_predict(X)
@@ -48,5 +44,4 @@ plt.ylabel('Spending Score (1-100)')
 plt.legend()
 plt.show()
     
-
 
