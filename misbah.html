@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dearest Misbah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #ffc0cb, #f08080, #dda0dd);
+            background-size: 300% 300%;
+            animation: gradient-animation 10s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .message-box {
+            animation: revealMessage 1.5s ease-in-out forwards;
+        }
+
+        @keyframes revealMessage {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .particle {
+            position: fixed;
+            bottom: -50px;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatUp linear infinite;
+        }
+        .heart { color: #ff6b81; }
+        .rose { color: #e11d48; }
+        .sparkle { color: #ffffa8; }
+        .kiss { color: #ff3333; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg) scale(1.2); opacity: 0; }
+        }
+
+        /* Particle animation timing and position */
+        .particle:nth-child(2n) { animation-duration: 15s; left: 15%; font-size: 2.5em; animation-delay: 1s; }
+        .particle:nth-child(3n) { animation-duration: 20s; left: 30%; font-size: 1.8em; animation-delay: 3s; }
+        .particle:nth-child(4n) { animation-duration: 10s; left: 45%; font-size: 2em; animation-delay: 5s; }
+        .particle:nth-child(5n) { animation-duration: 25s; left: 60%; font-size: 1.5em; animation-delay: 2s; }
+        .particle:nth-child(6n) { animation-duration: 18s; left: 75%; font-size: 2.2em; animation-delay: 4s; }
+        .particle:nth-child(7n) { animation-duration: 12s; left: 90%; font-size: 1.7em; animation-delay: 6s; }
+        .particle:nth-child(8n) { animation-duration: 16s; left: 5%; font-size: 2.3em; animation-delay: 7s; }
+        .particle:nth-child(9n) { animation-duration: 19s; left: 20%; font-size: 1.9em; animation-delay: 2.5s; }
+        .particle:nth-child(10n) { animation-duration: 22s; left: 50%; font-size: 2.6em; animation-delay: 0.5s; }
+        .particle:nth-child(11n) { animation-duration: 13s; left: 85%; font-size: 1.6em; animation-delay: 8s; }
+        .particle:nth-child(12n) { animation-duration: 17s; left: 35%; font-size: 2.4em; animation-delay: 5.5s; }
+        
+        .final-page .particle {
+            animation-duration: 1s;
+            animation-delay: 0s;
+        }
+
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 20;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #fce7f3;
+            animation: confetti-fall linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .pulsing-button {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 107, 129, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 107, 129, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 107, 129, 0); }
+        }
+        .hidden { display: none; }
+        .wedding-card-theme {
+            background: rgba(255, 250, 240, 0.85); /* A softer, elegant background */
+            border: 2px solid #e1a7b4; /* A romantic border color */
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .wedding-card-theme::before, .wedding-card-theme::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 0L61.8 38.2L100 38.2L69.1 61.8L80.9 100L50 76.4L19.1 100L30.9 61.8L0 38.2L38.2 38.2Z" fill="%23e1a7b4" opacity="0.1"/></svg>');
+            background-size: 50px;
+            z-index: -1;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4 relative">
+
+    <!-- Floating hearts, roses, and sparkles animations -->
+    <div class="particle heart">❤️</div>
+    <div class="particle rose">🌹</div>
+    <div class="particle heart">💖</div>
+    <div class="particle heart" style="color: #4a90e2;">💙</div>
+    <div class="particle heart" style="color: #9b59b6;">💜</div>
+    <div class="particle heart">❤️</div>
+    <div class="particle heart">💖</div>
+    <div class="particle sparkle">✨</div>
+    <div class="particle sparkle">✨</div>
+    <div class="particle rose">🌹</div>
+    <div class="particle heart">❤️</div>
+    <div class="particle heart">💖</div>
+    
+    <!-- Confetti container (initially hidden) -->
+    <div id="confettiContainer" class="confetti-container hidden"></div>
+
+    <!-- Page 1: Initial Proposal -->
+    <div id="page1" class="page max-w-md w-full p-8 rounded-3xl flex flex-col items-center text-center card relative z-10">
+        <h1 class="font-['Great_Vibes'] text-6xl sm:text-7xl font-bold text-pink-600 mb-6 leading-tight drop-shadow-lg">My heart beats for you, Misbah.</h1>
+
+        <div id="proposalContent" class="w-full">
+            <button id="answerButton" class="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300 pulsing-button">
+                Click for a surprise...
+            </button>
+        </div>
+
+        <div id="proposalMessage" class="hidden mt-8 text-gray-700 w-full">
+            <div id="proposalMessageBox" class="message-box p-6 bg-pink-100/70 border-2 border-pink-300 rounded-2xl shadow-inner backdrop-blur-sm">
+                <p class="text-xl sm:text-2xl font-medium mb-4">
+                    My Dearest Misbah, my sweetheart, my everything.
+                </p>
+                <p class="text-lg sm:text-xl italic mb-6">
+                    Every moment with you feels like a dream I never want to wake up from. You are not just a person I love, but the very essence of my happiness, the calm to my storm, and the gentle light that guides my way.
+                </p>
+                <p class="text-lg sm:text-xl italic mb-6">
+                    Every day with you, my darling **Bubu**, is the most beautiful chapter of my life. My life before you was like a song with no melody, a sky with no stars; you filled it with a love story more magical than I ever imagined.
+                </p>
+                <p class="text-lg sm:text-xl italic mb-6">
+                    **Madam ji**, my baby, my honey, my **rasmalai**, I want to promise you forever. With my **pasandida Aurat**, I want to build a future where our hearts beat as one, where we chase every sunset and face every sunrise together, hand in hand. With you, every moment is a treasured memory waiting to be made.
+                </p>
+                <p id="marryMeText" class="text-2xl sm:text-3xl font-bold text-pink-600">
+                    Will you be my Sharik-e- hayaat?
+                </p>
+                <button id="yesButton" class="mt-6 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300">
+                    Yes
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page 2: Wedding Card Theme -->
+    <div id="page2" class="page max-w-md w-full p-8 rounded-3xl flex-col items-center text-center card hidden wedding-card-theme relative z-10">
+        <div class="text-4xl sm:text-5xl mb-6 text-pink-700 font-bold">In the name of Allah, the Most Gracious, the Most Merciful</div>
+        <p class="font-['Great_Vibes'] text-3xl sm:text-4xl italic mb-2 text-pink-600">
+            By the grace of Allah, two hearts are united
+        </p>
+        <p class="text-lg sm:text-xl font-medium mb-4 text-gray-700">
+            We cordially invite you to join the families of
+        </p>
+        <h2 class="font-['Great_Vibes'] text-4xl sm:text-5xl text-pink-600 drop-shadow-lg mb-2">
+            The Family of Sahil Sakharkar & The Family of Misbah Mulla
+        </h2>
+        <p class="text-lg sm:text-xl italic my-4 text-gray-700">
+            to witness the sacred union of their children
+        </p>
+        <h2 class="font-['Great_Vibes'] text-6xl sm:text-7xl text-pink-600 drop-shadow-lg mb-2">
+            Sahil & Misbah
+        </h2>
+        <div class="text-lg sm:text-xl mt-4 font-bold text-pink-700">Date: TBD</div>
+        <div class="text-lg sm:text-xl mt-2 font-bold text-pink-700">Place: TBD</div>
+        <button id="next1" class="mt-8 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300">Next</button>
+    </div>
+
+    <!-- Page 3: "Misbah..." -->
+    <div id="page3" class="page max-w-md w-full p-8 rounded-3xl flex-col items-center text-center card hidden relative z-10">
+        <p class="font-['Great_Vibes'] text-5xl sm:text-6xl text-pink-600 drop-shadow-lg leading-snug">Misbah...</p>
+        <button id="next2" class="mt-8 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300">Next</button>
+    </div>
+
+    <!-- Page 4: "This idiot..." -->
+    <div id="page4" class="page max-w-md w-full p-8 rounded-3xl flex-col items-center text-center card hidden relative z-10">
+        <p class="font-['Great_Vibes'] text-5xl sm:text-6xl text-pink-600 drop-shadow-lg leading-snug">This idiot loves you so much</p>
+        <button id="next3" class="mt-8 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300">Next</button>
+    </div>
+    
+    <!-- Page 5: "I'll be with you..." -->
+    <div id="page5" class="page max-w-md w-full p-8 rounded-3xl flex-col items-center text-center card hidden final-page relative z-10">
+        <p class="font-['Great_Vibes'] text-6xl sm:text-7xl font-bold text-center drop-shadow-lg leading-snug bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-rose-500">
+            I'll be with you forever till Jannah InshaAllah
+        </p>
+        <button id="next4" class="mt-8 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300">Next</button>
+    </div>
+    
+    <!-- Page 6: Final Message -->
+    <div id="page6" class="page max-w-md w-full p-8 rounded-3xl flex-col items-center text-center card hidden relative z-10">
+        <p class="font-['Great_Vibes'] text-5xl sm:text-6xl text-pink-600 drop-shadow-lg leading-snug">
+            May Allah bring us together
+        </p>
+        <button id="next5" class="mt-8 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300">Next</button>
+    </div>
+    
+    <!-- Page 7: Aameen -->
+    <div id="page7" class="page max-w-md w-full p-8 rounded-3xl flex-col items-center text-center card hidden relative z-10">
+        <p class="font-['Great_Vibes'] text-5xl sm:text-6xl text-pink-600 drop-shadow-lg leading-snug">
+            Aameen
+        </p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const answerButton = document.getElementById('answerButton');
+            const yesButton = document.getElementById('yesButton');
+            const next1Button = document.getElementById('next1');
+            const next2Button = document.getElementById('next2');
+            const next3Button = document.getElementById('next3');
+            const next4Button = document.getElementById('next4');
+            const next5Button = document.getElementById('next5');
+            
+            const page1 = document.getElementById('page1');
+            const page2 = document.getElementById('page2');
+            const page3 = document.getElementById('page3');
+            const page4 = document.getElementById('page4');
+            const page5 = document.getElementById('page5');
+            const page6 = document.getElementById('page6');
+            const page7 = document.getElementById('page7');
+
+            const confettiContainer = document.getElementById('confettiContainer');
+
+            function showPage(pageToShow, pageToHide) {
+                pageToHide.classList.add('hidden');
+                pageToShow.classList.remove('hidden');
+                window.scrollTo(0, 0);
+            }
+
+            function createConfetti() {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 75%)`;
+                confettiContainer.appendChild(confetti);
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+
+            answerButton.addEventListener('click', () => {
+                // Hide the button and show the message with a dramatic animation
+                document.getElementById('proposalContent').classList.add('hidden');
+                document.getElementById('proposalMessage').classList.remove('hidden');
+            });
+
+            yesButton.addEventListener('click', () => {
+                const proposalMessageBox = document.getElementById('proposalMessageBox');
+                proposalMessageBox.innerHTML = `
+                    <p class="font-['Great_Vibes'] text-6xl sm:text-7xl font-bold text-center drop-shadow-lg leading-snug bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-rose-500">
+                        She said yes! I love you, Misbah!
+                    </p>
+                    <p class="text-xl sm:text-2xl font-medium text-gray-700 text-center mt-6">
+                        My heart is completely and utterly yours.
+                    </p>
+                    <button id="offToWeddingButton" class="mt-6 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-pink-300">
+                        Off to wedding
+                    </button>
+                `;
+                
+                // Show confetti container and trigger confetti animation
+                confettiContainer.classList.remove('hidden');
+                for (let i = 0; i < 100; i++) {
+                    createConfetti();
+                }
+                
+                // Add event listener to the dynamically created button
+                document.getElementById('offToWeddingButton').addEventListener('click', () => {
+                    showPage(page2, page1);
+                });
+            });
+            
+            next1Button.addEventListener('click', () => {
+                showPage(page3, page2);
+            });
+            
+            next2Button.addEventListener('click', () => {
+                showPage(page4, page3);
+            });
+            
+            next3Button.addEventListener('click', () => {
+                showPage(page5, page4);
+                // Trigger a new, more intense particle animation on the final page
+                const finalPageParticles = document.querySelectorAll('.final-page .particle');
+                finalPageParticles.forEach(p => {
+                    p.style.animationDuration = Math.random() * 1 + 0.5 + 's';
+                    p.style.animationDelay = Math.random() * 0.5 + 's';
+                });
+            });
+            
+            next4Button.addEventListener('click', () => {
+                showPage(page6, page5);
+            });
+            
+            next5Button.addEventListener('click', () => {
+                showPage(page7, page6);
+            });
+        });
+    </script>
+</body>
+</html>
+
